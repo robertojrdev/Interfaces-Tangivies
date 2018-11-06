@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         pool = GetComponent<AsteroidPool>();
+        StartGame();
     }
 
     private void StartGame()
