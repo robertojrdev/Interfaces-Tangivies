@@ -20,7 +20,7 @@ public class Asteroid : MonoBehaviour
 
     public void SetPosition(Vector3 position)
     {
-        rb.position = position;
+        transform.position = position;
     }
 
     public void SetSpeed(Vector3 speed)
@@ -30,7 +30,7 @@ public class Asteroid : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 }

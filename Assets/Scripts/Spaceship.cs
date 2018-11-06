@@ -3,6 +3,8 @@
 [RequireComponent(typeof(Rigidbody))]
 public class Spaceship : MonoBehaviour 
 {
+    public static Spaceship Instance { get; private set; }
+
     public float maxHeightDifference;
     public float maxRotation;
     public float smoothMove = 1;
@@ -11,6 +13,14 @@ public class Spaceship : MonoBehaviour
     private float height;
     private Vector3 currentSmoothVelocity;
     private Camera cam;
+
+    private void Awake()
+    {
+        if (Instance && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+    }
 
     private void Start()
     {
@@ -66,19 +76,14 @@ public class Spaceship : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-
-        if (other.tag == "Asteroid")
+        if (collision.gameObject.tag == "Asteroid")
         {
-            Asteroid asteroid = other.GetComponent<Asteroid>();
-            if(asteroid) asteroid.Destroy();
-            Destroy();
-        }
-        else if (other.tag == "Answer")
-        {
-            Answer answer = other.GetComponent<Answer>();
-            if (answer) answer.AnswerThis();
+            Asteroid asteroid = collision.gameObject.GetComponent<Asteroid>();
+            if (asteroid)
+                asteroid.Destroy();
+            GameManager.Instance.OnHitAsteroid();
         }
     }
 }

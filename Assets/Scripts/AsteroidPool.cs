@@ -22,7 +22,6 @@ public class AsteroidPool : MonoBehaviour
     {
         cam = FindObjectOfType<Camera>();
         StartPool();
-        isSpawning = true;
     }
 
     private void StartPool()
