@@ -39,7 +39,8 @@ GameObject:
   - component: {fileID: 4013157509625070}
   - component: {fileID: 33706032102259890}
   - component: {fileID: 23290202480585094}
-  - component: {fileID: 65565260043496542}
+  - component: {fileID: 135383078809610098}
+  - component: {fileID: 135237583174827830}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -120,7 +121,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 66a9f2d3d3df6d745ba15d83a27b575a, type: 3}
+  - {fileID: 2100000, guid: 8d1ea31c71c95d74bba442b3c61a3b19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -216,18 +217,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65565260043496542
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439994395005386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.36527845, y: 0.356336, z: 0.6243247}
-  m_Center: {x: 0.0024055152, y: -0.018794546, z: -0.33791733}
 --- !u!114 &114597838790934756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,3 +231,27 @@ MonoBehaviour:
   maxHeightDifference: 10
   maxRotation: 30
   smoothMove: 0.4
+--- !u!135 &135237583174827830
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439994395005386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.09
+  m_Center: {x: 0.09, y: -0.07, z: -0.43}
+--- !u!135 &135383078809610098
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439994395005386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.13
+  m_Center: {x: 0.0024055152, y: -0.018794546, z: -0.33791733}
