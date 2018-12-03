@@ -9,7 +9,7 @@ public class QuestionManager : MonoBehaviour
     public static QuestionManager Instance { get; private set; }
 
     public Answer answerPrefab;
-    public Text questionText;
+    public Image questionImage;
     public Transform spawnPosition;
     public float answerDistance;
     public float answerSpeed;
@@ -48,7 +48,7 @@ public class QuestionManager : MonoBehaviour
         answerGroup.StartMovement(answerSpeed);
 
         //set question text
-        questionText.text = question.question;
+        questionImage.sprite = question.question;
     }
 
     private int GetNexQuestionIndex()
@@ -190,9 +190,9 @@ public class AnswerGroup
 [Serializable]
 public class Question
 {
-    public string question;
-    public string answer1;
-    public string answer2;
-    public string answer3;
+    public Sprite question;
+    public Sprite answer1;
+    public Sprite answer2;
+    public Sprite answer3;
     public int correctOne;
 }
