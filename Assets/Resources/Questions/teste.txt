@@ -1,1 +1,1 @@
-{"question":"Com quantos paus se faz uma canoa...?","answer1":"Cinco","answer2":"Três","answer3":"Vinte","correctOne":1}
+{"question":"Quantos bla bla bla...?","answer1":"Cinco","answer2":"Tou a cagar","answer3":"Pois","correctOne":1}

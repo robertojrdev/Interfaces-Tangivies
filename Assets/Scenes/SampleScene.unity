@@ -167,11 +167,6 @@ Prefab:
       propertyPath: life
       value: 
       objectReference: {fileID: 1749821819}
-    - target: {fileID: 114336141345628958, guid: 2af381dfc01e0d14f8344e72b993ef9f,
-        type: 2}
-      propertyPath: minMaxSpeed.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af381dfc01e0d14f8344e72b993ef9f, type: 2}
   m_IsPrefabAsset: 0
@@ -4353,9 +4348,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
-    type: 1
+    type: 0
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4531,7 +4526,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 1335
+      m_Bits: 4294967295
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
