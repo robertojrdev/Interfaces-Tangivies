@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Answer : MonoBehaviour 
 {
-    public Image image;
+    public TextMesh text;
     Rigidbody rb;
     private bool isRight = false;
     private AnswerGroup group;
@@ -22,9 +21,9 @@ public class Answer : MonoBehaviour
         this.group = group;
     }
 
-    public void SetAnswer(Sprite answer)
+    public void SetAnswer(string answer)
     {
-        image.sprite = answer;
+        text.text = answer;
     }
 
     public void SetAsRight(bool right)

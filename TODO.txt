@@ -1,2 +1,0 @@
-- Alterar o QuastionManager.LoadQuestions para fazer load a imagens
-- 
