@@ -559,7 +559,11 @@ Prefab:
     - target: {fileID: 4841511384724806, guid: f69b89c7d73c5164085ed62579ab6fe9, type: 2}
       propertyPath: m_LocalPosition.x
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: -11.42
+=======
+      value: -5.93
+>>>>>>> parent of a4bec19... Correção prefab
 =======
       value: -5.93
 >>>>>>> parent of a4bec19... Correção prefab
