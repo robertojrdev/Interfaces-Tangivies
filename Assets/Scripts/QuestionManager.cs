@@ -73,24 +73,22 @@ public class QuestionManager : MonoBehaviour
         if (!Directory.Exists(path))
             return;
 
-        List<string> jsons = new List<string>();
-        foreach (string filePath in Directory.GetFiles(path))
-        {
-            jsons.Add(File.ReadAllText(filePath));
-        }
+        //get each folder inside questions folder
+        string[] folders = Directory.GetDirectories(path);
 
-        foreach (string json in jsons)
+        foreach (string folder in folders)
         {
-            Debug.Log(json);
-            try
-            {
-                Question question = JsonUtility.FromJson<Question>(json);
-                questions.Add(question);
-            }
-            catch(Exception ex)
-            {
-                Debug.Log("A json failed to read - " + ex.ToString());
-            }
+            string dir = @"Questions" + folder.Remove(0, path.Length);
+            object[] assets = Resources.LoadAll(dir, typeof(Sprite));
+
+            Question q = new Question();
+            q.question = assets[0] as Sprite;
+            q.answer1 = assets[1] as Sprite;
+            q.answer2 = assets[2] as Sprite;
+            q.answer3 = assets[3] as Sprite;
+            q.correctOne = 1;
+
+            questions.Add(q);
         }
 
         Debug.Log("Loaded " + questions.Count + " questions");

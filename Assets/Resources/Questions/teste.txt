@@ -1,1 +1,0 @@
-{"question":"Com quantos paus se faz uma canoa...?","answer1":"Cinco","answer2":"Três","answer3":"Vinte","correctOne":1}

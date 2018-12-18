@@ -1,1 +1,0 @@
-{"question":"Qual a cor do gato amarelo","answer1":"Azul","answer2":"Preto","answer3":"amarelo","correctOne":3}
