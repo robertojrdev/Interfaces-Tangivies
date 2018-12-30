@@ -5,9 +5,14 @@ public class Spaceship : MonoBehaviour
 {
     public static Spaceship Instance { get; private set; }
 
+    public bool mouseControl = false;
     public float maxHeightDifference;
     public float maxRotation;
     public float smoothMove = 1;
+
+    [Header("Arduino")]
+    public float scale = 0.1f;
+    public float startHeight;
 
     private Rigidbody rb;
     private float height;
@@ -32,25 +37,33 @@ public class Spaceship : MonoBehaviour
 
     private void Update()
     {
-        SetHeight();
+        if (mouseControl)
+            SetHeightWithMouse();
+
         MovePlayer();
         Rotate();
     }
 
-    private void SetHeight()
+    public void SetHeightWithArduino(float height)
     {
-        Plane plane = new Plane(Vector3.back,0);
+        if (height > 100 || height < 0)
+            return;
+
+        this.height = height * scale + startHeight;
+    }
+
+    private void SetHeightWithMouse()
+    {
+        Plane plane = new Plane(Vector3.back, 0);
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
         float dist = 0;
         Vector3 hitPos;
-        if(plane.Raycast(ray, out dist))
+        if (plane.Raycast(ray, out dist))
         {
-            hitPos = ray.direction* dist;
+            hitPos = ray.direction * dist;
             height = hitPos.y;
         }
-
     }
 
     private void MovePlayer()
