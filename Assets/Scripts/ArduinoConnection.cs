@@ -25,8 +25,18 @@ public class ArduinoConnection : MonoBehaviour
         if (sp == null)
             return;
 
-        string received = sp.ReadExisting();
-        received = received.Replace('.', ',');
+        string received;
+        //try to receive information from arduino
+        try
+        {
+            received = sp.ReadExisting();
+            received = received.Replace('.', ',');
+        }
+        catch (Exception)
+        {
+            TryToReconnect();
+            return;
+        }
 
         string[] messages = received.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
         foreach (var message in messages)
@@ -44,6 +54,22 @@ public class ArduinoConnection : MonoBehaviour
                     Debug.LogWarning(" -> Not parsed");
                 }
             }
+        }
+    }
+
+    private void TryToReconnect()
+    {
+        StartCoroutine(Reconnect_Routine());
+    }
+
+    IEnumerator Reconnect_Routine()
+    {
+        sp = null;
+        while (sp == null)
+        {
+            Debug.Log("Trying to connect");
+            FindArduino();
+            yield return new WaitForSeconds(1);
         }
     }
 
