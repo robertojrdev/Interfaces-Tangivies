@@ -31,6 +31,7 @@ public class Asteroid : MonoBehaviour
     public void Destroy()
     {
         gameObject.SetActive(false);
+        Explosion.Explode(transform.position);
     }
 
 }
