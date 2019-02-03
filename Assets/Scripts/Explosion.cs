@@ -11,21 +11,17 @@ public class Explosion : MonoBehaviour
 
     public static void Explode(Vector3 position)
     {
-        if (instance)
-            instance.StartCoroutine(instance.Instantiate_Routine(position));
+        if (!instance)
+            return;
+        
+        GameObject explosion = Instantiate(instance.explosion, position, Quaternion.identity);
+        Destroy(explosion, instance.timer);
     }
 
     private void Awake()
     {
         if(!instance)
             instance = this;
-    }
-
-    IEnumerator Instantiate_Routine(Vector3 position)
-    {
-        GameObject explosion = Instantiate(this.explosion, position, Quaternion.identity);
-        yield return new WaitForSeconds(timer);
-        Destroy(explosion);
     }
 
 }

@@ -288,12 +288,12 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221541745}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -566,6 +566,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4180007e77e1924fb9632715663c400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &610747242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610747240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9bd86643d9e3f49be6f4a72426ce15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
+  timer: 3
 --- !u!1 &684273416
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +801,11 @@ PrefabInstance:
         type: 3}
       propertyPath: scale
       value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 114597838790934756, guid: f69b89c7d73c5164085ed62579ab6fe9,
+        type: 3}
+      propertyPath: mouseControl
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f69b89c7d73c5164085ed62579ab6fe9, type: 3}
