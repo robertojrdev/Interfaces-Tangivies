@@ -6,16 +6,28 @@ public class Explosion : MonoBehaviour
 {
     private static Explosion instance;
 
-    [SerializeField] private GameObject explosion;
-    [SerializeField] private float timer;
+    [SerializeField] private List<ExplosionItem> explosions = new List<ExplosionItem>();
 
-    public static void Explode(Vector3 position)
+    [System.Serializable]
+    public class ExplosionItem
+    {
+        public string name;
+        public GameObject explosion;
+        public float timer;
+    }
+
+    public static void Explode(string name, Vector3 position)
     {
         if (!instance)
             return;
-        
-        GameObject explosion = Instantiate(instance.explosion, position, Quaternion.identity);
-        Destroy(explosion, instance.timer);
+
+        ExplosionItem explosion = instance.explosions.Find(x => x.name == name);
+
+        if (explosion != null)
+        {
+            GameObject obj = Instantiate(explosion.explosion, position, Quaternion.identity);
+            Destroy(obj, explosion.timer);
+        }
     }
 
     private void Awake()

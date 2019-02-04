@@ -176,6 +176,11 @@ PrefabInstance:
       propertyPath: minMaxSpeed.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114336141345628958, guid: 2af381dfc01e0d14f8344e72b993ef9f,
+        type: 3}
+      propertyPath: spawnTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af381dfc01e0d14f8344e72b993ef9f, type: 3}
 --- !u!1 &170076733
@@ -578,8 +583,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9bd86643d9e3f49be6f4a72426ce15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b, type: 3}
-  timer: 3
+  explosions:
+  - name: on hit asteroid
+    explosion: {fileID: 1323538457342158, guid: 04a46f28a005a584b9b057661c3eadb7,
+      type: 3}
+    timer: 5
+  - name: answer right
+    explosion: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+      type: 3}
+    timer: 1.75
+  - name: answer wrong
+    explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
+      type: 3}
+    timer: 3
 --- !u!1 &684273416
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +937,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 3
+  m_AdditionalShaderChannelsFlag: 27
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

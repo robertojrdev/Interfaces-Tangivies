@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class QuestionManager : MonoBehaviour 
 {
     public static QuestionManager Instance { get; private set; }
+    public static Group SelectedGroup { get; set; } = Group.Group_1;
+
+    public enum Group { Group_1, Group_2, Group_3 }
 
     public Answer answerPrefab;
     public Image questionImage;
@@ -70,22 +73,20 @@ public class QuestionManager : MonoBehaviour
     public void LoadQuestions()
     {
         string path = GetQuestionsPath();
-        if (!Directory.Exists(path))
-            return;
+        //print("Path: " + path);
+        //if (!Directory.Exists(path))
+        //    return;
 
-        //get each folder inside questions folder
-        string[] folders = Directory.GetDirectories(path);
+        object[] assets = Resources.LoadAll(path, typeof(Sprite));
+        print("Count: " + assets.Length);
 
-        foreach (string folder in folders)
+        for (int i = 0; i < assets.Length / 4; i++)
         {
-            string dir = @"Questions" + folder.Remove(0, path.Length);
-            object[] assets = Resources.LoadAll(dir, typeof(Sprite));
-
             Question q = new Question();
-            q.question = assets[0] as Sprite;
-            q.answer1 = assets[1] as Sprite;
-            q.answer2 = assets[2] as Sprite;
-            q.answer3 = assets[3] as Sprite;
+            q.question = assets[4 * i] as Sprite;
+            q.answer1 = assets[4 * i + 1] as Sprite;
+            q.answer2 = assets[4 * i + 2] as Sprite;
+            q.answer3 = assets[4 * i + 3] as Sprite;
             q.correctOne = 1;
 
             questions.Add(q);
@@ -111,9 +112,11 @@ public class QuestionManager : MonoBehaviour
 
     private string GetQuestionsPath()
     {
-        string path = Application.dataPath;
-        path = Path.Combine(path, "Resources");
-        path = Path.Combine(path, "Questions");
+        //string path = Application.dataPath;
+        //path = Path.Combine(path, "Resources");
+        //path = Path.Combine(path, "Questions");
+        string path = "Questions";
+        path = Path.Combine(path, SelectedGroup.ToString());
         return path;
     }
 }

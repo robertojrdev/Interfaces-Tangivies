@@ -8,6 +8,7 @@ public class Answer : MonoBehaviour
     Rigidbody rb;
     private bool isRight = false;
     private AnswerGroup group;
+    private float minXPosition = -20;
 
     private void Awake()
     {
@@ -15,6 +16,15 @@ public class Answer : MonoBehaviour
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
         rb.freezeRotation = true;
+    }
+
+    private void Update()
+    {
+        if (transform.position.x <= minXPosition)
+        {
+            SetAsRight(false);
+            AnswerThis();
+        }
     }
 
     public void SetGroup(AnswerGroup group)
@@ -42,7 +52,7 @@ public class Answer : MonoBehaviour
         group.Destroy();
     }
 
-    public void StartMovement(Vector3 velocity)
+    public void StartMovement(Vector3 velocity, float minXPosition = -20)
     {
         rb.velocity = velocity;
     }

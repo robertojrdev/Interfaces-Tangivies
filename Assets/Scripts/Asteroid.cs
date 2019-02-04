@@ -31,7 +31,7 @@ public class Asteroid : MonoBehaviour
     public void Destroy()
     {
         gameObject.SetActive(false);
-        Explosion.Explode(transform.position);
+        Explosion.Explode("on hit asteroid", transform.position);
     }
 
 }

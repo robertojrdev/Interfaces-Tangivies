@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
         isLastSpawnActive = false;
         score += 10;
         UIController.UpdateScore(score);
+        Explosion.Explode("answer right", Spaceship.Instance.transform.position);
     }
 
     public void OnAnswerWrong()
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
         score -= 10;
         score = Mathf.Clamp(score, 0, int.MaxValue);
         UIController.UpdateScore(score);
+        Explosion.Explode("answer wrong", Spaceship.Instance.transform.position);
     }
 
     public void OnHitAsteroid()
