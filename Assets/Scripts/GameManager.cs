@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int life = 3;
     private int currentLife;
 
+    public FinalScore finalsScore;
+
     private float timer = 0;
     private bool isLastSpawnActive = false;
 
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void OnFinishQuestions()
     {
-        FinalScore.ShowFinalScore(rightAnswers.ToArray());
+        finalsScore.SetScore(rightAnswers.ToArray());
         SaveValues();
     }
 
@@ -104,7 +106,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         Spaceship.Instance.Destroy();
-        FinalScore.ShowFinalScore(rightAnswers.ToArray());
+        finalsScore.SetScore(rightAnswers.ToArray());
         SaveValues();
         QuestionManager.Instance.HideQuestionAndStop();
     }

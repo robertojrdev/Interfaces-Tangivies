@@ -187,6 +187,11 @@ PrefabInstance:
       propertyPath: timeToQuestions
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114120992694249810, guid: 2af381dfc01e0d14f8344e72b993ef9f,
+        type: 3}
+      propertyPath: finalsScore
+      value: 
+      objectReference: {fileID: 1472956066}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af381dfc01e0d14f8344e72b993ef9f, type: 3}
 --- !u!1 &170076733
@@ -987,6 +992,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1472956066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8109919972485351498, guid: fa99919b1d8a2cf4da97d8f29eea4896,
+    type: 3}
+  m_PrefabInstance: {fileID: 8109919972212973660}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b53279200c76833498b5d219e21d6fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1550464780
 GameObject:
   m_ObjectHideFlags: 0
