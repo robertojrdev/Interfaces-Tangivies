@@ -39,11 +39,23 @@ public class QuestionManager : MonoBehaviour
             GenerateQuestion();
     }
 
+    public void HideQuestion()
+    {
+        questionImage.sprite = null;
+        questionImage.color = new Color(0, 0, 0, 0);
+    }
+
     public void GenerateQuestion()
     {
         int index = GetNexQuestionIndex();
-        if (index == -1)
+        if (index == -1) //if has no questions
             return;
+        else if (index == -2) //if finish questions
+        {
+            GameManager.Instance.OnFinishQuestions();
+            HideQuestion();
+            return;
+        }
 
         Question question = questions[index];
         AnswerGroup answerGroup = new AnswerGroup(question, answerPrefab);
@@ -61,7 +73,7 @@ public class QuestionManager : MonoBehaviour
 
         if(questionIndex >= questions.Count)
         {
-            questionIndex = 0;
+            questionIndex = -2;
         }
 
         int index = questionIndex;

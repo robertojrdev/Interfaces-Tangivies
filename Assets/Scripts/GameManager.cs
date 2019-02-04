@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour 
@@ -11,9 +13,12 @@ public class GameManager : MonoBehaviour
 
     public int score = 0;
     public int life = 3;
+    private int currentLife;
 
     private float timer = 0;
     private bool isLastSpawnActive = false;
+
+    private List<bool> rightAnswers = new List<bool>();
 
     private void Awake()
     {
@@ -31,8 +36,11 @@ public class GameManager : MonoBehaviour
 
         timer = timeToQuestions;
 
-        UIController.UpdateLife(life);
+        currentLife = life;
+        Spaceship.Instance.UpdateLifeBar(life, currentLife);
+        UIController.UpdateLife(currentLife);
         UIController.UpdateScore(score);
+
     }
 
     private void StartGame()
@@ -57,11 +65,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnFinishQuestions()
+    {
+        FinalScore.ShowFinalScore(rightAnswers.ToArray());
+    }
+
     public void OnAnswerRight()
     {
         isLastSpawnActive = false;
         score += 10;
         UIController.UpdateScore(score);
+        rightAnswers.Add(true);
         Explosion.Explode("answer right", Spaceship.Instance.transform.position);
     }
 
@@ -71,14 +85,16 @@ public class GameManager : MonoBehaviour
         score -= 10;
         score = Mathf.Clamp(score, 0, int.MaxValue);
         UIController.UpdateScore(score);
+        rightAnswers.Add(false);
         Explosion.Explode("answer wrong", Spaceship.Instance.transform.position);
     }
 
     public void OnHitAsteroid()
     {
-        life--;
-        life = Mathf.Clamp(life, 0, int.MaxValue);
-        if (life == 0)
+        currentLife--;
+        currentLife = Mathf.Clamp(currentLife, 0, int.MaxValue);
+        Spaceship.Instance.UpdateLifeBar(life, currentLife);
+        if (currentLife == 0)
             FinishGame();
         UIController.UpdateLife(life);
     }
@@ -87,5 +103,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         Spaceship.Instance.Destroy();
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

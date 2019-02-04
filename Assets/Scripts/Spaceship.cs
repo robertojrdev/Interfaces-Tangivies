@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Spaceship : MonoBehaviour 
@@ -13,6 +14,9 @@ public class Spaceship : MonoBehaviour
     [Header("Arduino")]
     public float scale = 0.1f;
     public float startHeight;
+
+    [Header("Life")]
+    public Image lifeBar;
 
     private Rigidbody rb;
     private float height;
@@ -87,6 +91,15 @@ public class Spaceship : MonoBehaviour
     public void Destroy()
     {
 
+    }
+
+    public void UpdateLifeBar(float maxLife, float currentLife)
+    {
+        float t = currentLife / maxLife;
+        Color color = Color.Lerp(Color.red, Color.green, t);
+
+        lifeBar.fillAmount = t;
+        lifeBar.color = color;
     }
 
     private void OnCollisionEnter(Collision collision)
