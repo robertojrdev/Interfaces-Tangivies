@@ -1,21 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &100100000
-Prefab:
-  m_ObjectHideFlags: 1
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications: []
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1182169688560438}
-  m_IsPrefabAsset: 1
 --- !u!1 &1182169688560438
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4731154244742082}
@@ -23,6 +13,8 @@ GameObject:
   - component: {fileID: 114336141345628958}
   - component: {fileID: 114455011909982584}
   - component: {fileID: 114923909781458028}
+  - component: {fileID: 610747241}
+  - component: {fileID: 610747242}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -30,11 +22,136 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4731154244742082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182169688560438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4160309404950732}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114120992694249810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182169688560438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4020d838fdeb0a544b61b56176d0edc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  timeToQuestions: 10
+  score: 0
+  life: 4
+--- !u!114 &114336141345628958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182169688560438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628d2222b08d2c54ab2d562352854dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolAmount: 30
+  spawnTime: 1
+  asteroidPrefab: {fileID: 114917239203697022, guid: de88d3a722566bd4cb799f5f6fa1f45f,
+    type: 3}
+  spawnOffset: 22
+  minMaxHeight: {x: -10, y: 10}
+  minMaxSpeed: {x: 5, y: 10}
+  minMaxTorque: {x: -3, y: 3}
+--- !u!114 &114455011909982584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182169688560438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54f75ebb2af05e4bb1db02dddb731e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerPrefab: {fileID: 114979349926645236, guid: c72c46b2b1f1efe48b96eb2b9280535d,
+    type: 3}
+  questionImage: {fileID: 0}
+  spawnPosition: {fileID: 4160309404950732}
+  answerDistance: 6
+  answerSpeed: 2
+--- !u!114 &114923909781458028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182169688560438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63be90da57082504cb3451e054f8ac1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 0}
+  life: {fileID: 0}
+--- !u!114 &610747241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182169688560438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4180007e77e1924fb9632715663c400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &610747242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182169688560438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9bd86643d9e3f49be6f4a72426ce15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosions:
+  - name: destroy spaceship
+    explosion: {fileID: 1000011797152326, guid: acf39d9f4addf294d93fa56fa373961b,
+      type: 3}
+    timer: 3
+  - name: on hit asteroid
+    explosion: {fileID: 1323538457342158, guid: 04a46f28a005a584b9b057661c3eadb7,
+      type: 3}
+    timer: 5
+  - name: answer right
+    explosion: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+      type: 3}
+    timer: 1.75
+  - name: answer wrong
+    explosion: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
+      type: 3}
+    timer: 1.7
 --- !u!1 &1327901433894024
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4160309404950732}
@@ -47,9 +164,10 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &4160309404950732
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327901433894024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 22, y: 0, z: 0}
@@ -58,79 +176,3 @@ Transform:
   m_Father: {fileID: 4731154244742082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4731154244742082
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182169688560438}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4160309404950732}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114120992694249810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182169688560438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4020d838fdeb0a544b61b56176d0edc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  timeToQuestions: 10
-  points: 0
---- !u!114 &114336141345628958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182169688560438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 628d2222b08d2c54ab2d562352854dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolAmount: 30
-  spawnTime: 0.5
-  asteroidPrefab: {fileID: 114917239203697022, guid: de88d3a722566bd4cb799f5f6fa1f45f,
-    type: 2}
-  spawnOffset: 22
-  minMaxHeight: {x: -10, y: 10}
-  minMaxSpeed: {x: 5, y: 20}
-  minMaxTorque: {x: -3, y: 3}
---- !u!114 &114455011909982584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182169688560438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54f75ebb2af05e4bb1db02dddb731e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  answerPrefab: {fileID: 114979349926645236, guid: c72c46b2b1f1efe48b96eb2b9280535d,
-    type: 2}
-  questionText: {fileID: 0}
-  spawnPosition: {fileID: 4160309404950732}
-  answerDistance: 6
-  answerSpeed: 2
---- !u!114 &114923909781458028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1182169688560438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63be90da57082504cb3451e054f8ac1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: {fileID: 0}

@@ -90,7 +90,8 @@ public class Spaceship : MonoBehaviour
 
     public void Destroy()
     {
-
+        gameObject.SetActive(false);
+        Explosion.Explode("destroy spaceship", transform.position);
     }
 
     public void UpdateLifeBar(float maxLife, float currentLife)

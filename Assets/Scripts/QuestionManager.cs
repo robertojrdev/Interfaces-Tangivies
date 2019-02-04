@@ -20,6 +20,8 @@ public class QuestionManager : MonoBehaviour
     private List<Question> questions = new List<Question>();
     private int questionIndex;
 
+    private bool active = true;
+
     private void Awake()
     {
         if (Instance && Instance != this)
@@ -39,21 +41,25 @@ public class QuestionManager : MonoBehaviour
             GenerateQuestion();
     }
 
-    public void HideQuestion()
+    public void HideQuestionAndStop()
     {
         questionImage.sprite = null;
         questionImage.color = new Color(0, 0, 0, 0);
+        active = false;
     }
 
     public void GenerateQuestion()
     {
+        if (!active)
+            return;
+
         int index = GetNexQuestionIndex();
         if (index == -1) //if has no questions
             return;
         else if (index == -2) //if finish questions
         {
             GameManager.Instance.OnFinishQuestions();
-            HideQuestion();
+            HideQuestionAndStop();
             return;
         }
 

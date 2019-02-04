@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over");
         Spaceship.Instance.Destroy();
+        FinalScore.ShowFinalScore(rightAnswers.ToArray());
+        QuestionManager.Instance.HideQuestionAndStop();
     }
 
     public void BackToMenu()
