@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
     public void OnFinishQuestions()
     {
         FinalScore.ShowFinalScore(rightAnswers.ToArray());
+        SaveValues();
     }
 
     public void OnAnswerRight()
@@ -104,11 +105,24 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
         Spaceship.Instance.Destroy();
         FinalScore.ShowFinalScore(rightAnswers.ToArray());
+        SaveValues();
         QuestionManager.Instance.HideQuestionAndStop();
     }
 
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void SaveValues()
+    {
+        string result = PlayerPrefs.GetString("Save");
+        foreach (var answer in rightAnswers)
+        {
+            result += answer ? 1 : 0;
+        }
+
+        result += "_";
+        PlayerPrefs.SetString("Save", result);
     }
 }

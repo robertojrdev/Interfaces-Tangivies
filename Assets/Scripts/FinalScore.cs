@@ -27,15 +27,27 @@ public class FinalScore : MonoBehaviour
                 return;
         }
 
-        print("Show final score");
-        print("answers: " + rightAnswers.Length);
-
         instance.gameObject.SetActive(true);
 
         int index = 1;
         foreach (var answer in rightAnswers)
         {
             ScoreItem item = Instantiate(instance.prefab.gameObject, instance.holder).GetComponent<ScoreItem>();
+            item.Activate(true);
+            item.SetIndex(index);
+            item.SetCorrect(answer);
+            index++;
+        }
+    }
+
+    public void SetScore(params bool[] rightAnswers)
+    {
+        gameObject.SetActive(true);
+
+        int index = 1;
+        foreach (var answer in rightAnswers)
+        {
+            ScoreItem item = Instantiate(prefab.gameObject, holder).GetComponent<ScoreItem>();
             item.Activate(true);
             item.SetIndex(index);
             item.SetCorrect(answer);

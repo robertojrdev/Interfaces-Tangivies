@@ -13,11 +13,21 @@ public class Tutorial : MonoBehaviour
         player.clip = video;
         player.time = 0;
         player.Play();
+        player.isLooping = false;
         anim.SetBool("Visible", true);
+        StartCoroutine(CloseOnFinish());
+    }
+
+    IEnumerator CloseOnFinish()
+    {
+        yield return new WaitWhile(() => !player.isPlaying);
+        yield return new WaitWhile(() => player.isPlaying);
+        Stop();
     }
 
     public void Stop()
     {
+        StopAllCoroutines();
         player.Stop();
         anim.SetBool("Visible", false);
 
