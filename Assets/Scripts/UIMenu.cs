@@ -26,9 +26,14 @@ public class UIMenu : MonoBehaviour
 
     }
 
-    private void ToggleCredits()
+    public void ToggleCredits()
     {
         credits.SetActive(!credits.activeInHierarchy);
+    }
+
+    public void Toggle(GameObject toggleGo)
+    {
+        toggleGo.SetActive(!toggleGo.activeInHierarchy);
     }
 
     void Play()
