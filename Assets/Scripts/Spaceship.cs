@@ -1,12 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Spaceship : MonoBehaviour 
 {
     public static Spaceship Instance { get; private set; }
+    public bool MouseControl { get => mouseControl;
+        set
+        {
+            mouseControl = value;
 
-    public bool mouseControl = false;
+            if (value)
+                onActivateMouseControl.Invoke();
+            else
+                onDeactivateMouseControl.Invoke();
+
+            print("Called");
+        }
+    }
+
+    [SerializeField] private bool mouseControl = false;
     public float maxHeightDifference;
     public float maxRotation;
     public float smoothMove = 1;
@@ -17,6 +31,10 @@ public class Spaceship : MonoBehaviour
 
     [Header("Life")]
     public Image lifeBar;
+
+    [Header("Events")]
+    public UnityEvent onActivateMouseControl;
+    public UnityEvent onDeactivateMouseControl;
 
     private Rigidbody rb;
     private float height;
@@ -41,7 +59,10 @@ public class Spaceship : MonoBehaviour
 
     private void Update()
     {
-        if (mouseControl)
+        if (Input.GetKeyDown(KeyCode.Space))
+            MouseControl = !MouseControl;
+
+        if (MouseControl)
             SetHeightWithMouse();
 
         MovePlayer();
@@ -50,6 +71,9 @@ public class Spaceship : MonoBehaviour
 
     public void SetHeightWithArduino(float height)
     {
+        if (MouseControl)
+            return;
+
         if (height > 100 || height < 0)
             return;
 
