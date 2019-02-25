@@ -118,6 +118,9 @@ public class GameManager : MonoBehaviour
 
     public void SaveValues()
     {
+        if (rightAnswers.Count <= 0)
+            return;
+
         string result = PlayerPrefs.GetString("Save");
         foreach (var answer in rightAnswers)
         {

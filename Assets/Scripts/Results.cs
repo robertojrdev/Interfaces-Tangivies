@@ -26,6 +26,10 @@ public class Results : MonoBehaviour
         {
             switch (cha)
             {
+                case '_':
+                    FinalScore score = Instantiate(prefab.gameObject, holder).GetComponent<FinalScore>();
+                    results.Add(score, new List<bool>());
+                    break;
                 case '0':
                     if(results.Count > 0)
                         results.Last().Value.Add(false);
@@ -33,10 +37,6 @@ public class Results : MonoBehaviour
                 case '1':
                     if(results.Count > 0)
                         results.Last().Value.Add(true);
-                    break;
-                case '_':
-                    FinalScore score = Instantiate(prefab.gameObject, holder).GetComponent<FinalScore>();
-                    results.Add(score, new List<bool>());
                     break;
             }
         }

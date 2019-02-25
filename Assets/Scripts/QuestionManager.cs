@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -158,16 +159,31 @@ public class AnswerGroup
             if (question.correctOne - 1 == i)
                 answers[i].SetAsRight(true);
         }
+
+        //make random
+        int[] index = GetRandomIndexArray(3);
+
         //set answer
-        answers[0].SetAnswer(question.answer1);
-        answers[1].SetAnswer(question.answer2);
-        answers[2].SetAnswer(question.answer3);
+        answers[index[0]].SetAnswer(question.answer1);
+        answers[index[1]].SetAnswer(question.answer2);
+        answers[index[2]].SetAnswer(question.answer3);
 
         //set group
         for (int i = 0; i < answers.Length; i++)
         {
             answers[i].SetGroup(this);
         }
+    }
+
+    private int[] GetRandomIndexArray(int size)
+    {
+        List<int> ind = new List<int>();
+        for (int i = 0; i < size; i++)
+        {
+            ind.Add(i);
+        }
+
+        return ind.OrderBy(x => UnityEngine.Random.value).ToArray();
     }
 
     public void SetPosition(Vector3 position, float distance)

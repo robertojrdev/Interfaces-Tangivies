@@ -15,6 +15,13 @@ public class FinalScore : MonoBehaviour
             instance = this;
     }
 
+    private void Update()
+    {
+        //reset
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
+            PlayerPrefs.SetString("Save", "");
+    }
+
     public static void ShowFinalScore(params bool[] rightAnswers)
     {
         if (!instance)
